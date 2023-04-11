@@ -195,6 +195,27 @@ void MdlFileSource::Parse() {
         throw FileParseError(_WHERE_,
                              "Incomplete bond records in " + GetFileName());
 
+      // Read CHG field
+      std::string m, tag;
+      unsigned int nChg, atom;
+      int chg;
+
+      for (; fileIter != fileEnd; fileIter++) {
+        if ((*fileIter).find("M  CHG") == 0) { // Found a data record
+          std::istringstream istr(*fileIter++);
+          istr >> m >> tag >> nChg;
+          LOG_F(0, "M CHG {} {} {}", m, tag, nChg);
+	  for (int i=0; i<nChg; i++) {
+            istr >> idxAtom1 >> chg;
+            m_atomList[idxAtom1-1]->SetFormalCharge(chg);
+	  }
+	}
+
+        if ((*fileIter).find("M  END") == 0 || (*fileIter).find(">") == 0) {
+	  break;
+        }
+      }
+
       // DM 12 May 1999 - read data records (if any)
       for (; fileIter != fileEnd; fileIter++) {
         if ((*fileIter).find(">") == 0) { // Found a data record
