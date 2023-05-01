@@ -2,6 +2,7 @@
   "media-type": "application/vnd.rxdock.scoring-function",
   "title": "Intermolecular scoring function (without SOLVATION, grid-based VDW)",
   "version": "0.1.0",
+  "sections": ["const", "rot", "setup-polar", "polar", "repul", "vdw"],
   "_comment_const1": "Constant scoring function",
   "_comment_const2": "Represents loss of translation, rotational entropy of ligand",
   "const": {
