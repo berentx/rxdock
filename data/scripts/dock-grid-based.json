@@ -2,6 +2,7 @@
   "media-type": "application/vnd.rxdock.run-script",
   "title": "Free docking (grid-based VDW)",
   "version": "0.1.0",
+  "sections": ["rxdock.score", "set-slope-1", "random-population", "ga-slope-1", "set-slope-3", "ga-slope-3", "set-slope-5", "ga-slope-5", "set-slope-10", "monte-carlo-10K", "simplex", "final"],
   "rxdock.score": {
     "inter": "intermolecular-grid-based.json",
     "intra": "intra-ligand.json",
